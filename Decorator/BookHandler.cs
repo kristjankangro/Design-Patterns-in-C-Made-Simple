@@ -7,7 +7,10 @@ namespace Demo.Clip01
     {
         public void Handle(Book product)
         {
-            Size bookSize = product.Dimensions;
+            var slimCd = new Size(142 * Length.Millimeter,
+                125 * Length.Millimeter, 5 * Length.Millimeter
+            );
+            var bookSize = product.GetDimensions(slimCd);
             Console.WriteLine($"Handling book \"{product.Title}\" of size {bookSize}");
         }
     }

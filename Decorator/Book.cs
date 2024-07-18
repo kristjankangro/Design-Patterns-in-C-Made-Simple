@@ -14,18 +14,23 @@ namespace Demo.Clip01
         }
 
         protected Book(Book book) : this(book.Title, book.Dimensions){}
+
+        public virtual Size GetDimensions(Size adPapersHeight) => Dimensions.AddToTop(adPapersHeight);
         public override string ToString() =>
             $"{this.Title} - {this.Dimensions}";
     }
-    
-    class WrappedBook : Book
+
+    public class TwoPack : Book
     {
-        private readonly Size packageSize = new Size(7 * Length.Millimeter);
-        public WrappedBook(Book book) : base(book)
+        public TwoPack(Book book) : base(book)
         {
         }
 
-        public override Size Dimensions => base.Dimensions.Add(
-            packageSize);
+        public override Size GetDimensions(Size adPapersHeight)
+        {
+            return base.GetDimensions(Size.Zero)
+                .ScaleHeight(2)
+                .AddToTop(adPapersHeight);
+        }
     }
 }
