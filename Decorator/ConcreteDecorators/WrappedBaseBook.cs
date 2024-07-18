@@ -2,10 +2,10 @@ using Demo.Common;
 
 namespace Demo.Clip01;
 
-class WrappedBook : BookDecorator
+class WrappedBaseBook : BaseBookDecorator
 {
     private readonly Size packageSize = new(7 * Length.Millimeter);
-    public WrappedBook(IBook book) : base(book)
+    public WrappedBaseBook(IBook book) : base(book)
     {
     }
 

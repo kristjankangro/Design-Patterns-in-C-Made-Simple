@@ -1,5 +1,4 @@
-﻿using System;
-using Demo.Common;
+﻿using Demo.Common;
 
 namespace Demo.Clip01
 {

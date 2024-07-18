@@ -16,7 +16,7 @@ namespace Demo.Clip01
             var customer = new BookHandler();
             customer.Handle(product);
 
-            IBook wrappedBook = new WrappedBook(product);
+            IBook wrappedBook = new WrappedBaseBook(product);
             var employee = new BookHandler();
             employee.Handle(wrappedBook);
 
