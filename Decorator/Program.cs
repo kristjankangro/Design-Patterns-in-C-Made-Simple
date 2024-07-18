@@ -2,4 +2,5 @@
 
 using Demo.Clip01;
 
-new Clip01Demo().Run();
+new DemoRunner().Run();
+

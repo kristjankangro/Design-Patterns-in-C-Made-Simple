@@ -12,6 +12,12 @@
             this.Length = length;
             this.Height = height;
         }
+        public Size(Length onefit)
+        {
+            this.Width = onefit;
+            this.Length = onefit;
+            this.Height = onefit;
+        }
 
         public static Size Zero =>
             new Size(Length.Zero, Length.Zero, Length.Zero);

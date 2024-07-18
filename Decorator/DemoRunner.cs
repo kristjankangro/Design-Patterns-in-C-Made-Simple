@@ -2,7 +2,7 @@
 
 namespace Demo.Clip01
 {
-    class Clip01Demo : Common.Demo
+    class DemoRunner : Common.Demo
     {
         protected override int ClipNumber { get; } = 1;
         private readonly Length mm = Length.Millimeter;
@@ -11,12 +11,15 @@ namespace Demo.Clip01
         {
             var book = new Book("Title",
                 new Size(188 * mm, 239 * mm, 28 * mm));
-            var customer = new Buyer();
+            var customer = new BookHandler();
             customer.Handle(book);
 
-            var employee = new Dispatcher();
-            employee.Handle(book);
+            Book wrappedBook = new WrappedBook(book);
+            var employee = new BookHandler();
+            employee.Handle(wrappedBook);
 
         }
     }
+
+
 }
