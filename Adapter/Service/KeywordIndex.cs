@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Demo.Clip01.Abstractions;
+﻿using Demo.Clip01.Abstractions;
 using Demo.Common;
 
 namespace Demo.Clip01
@@ -36,7 +33,9 @@ namespace Demo.Clip01
         public IEnumerable<TItem> Find(string keyword) =>
             this.Index.TryGetValue(keyword.ToLowerInvariant(), out IList<TItem> items) ? items
             : Enumerable.Empty<TItem>();
-
+        public IEnumerable<TItem> FindApproximate(string keyword) =>
+            this.Index.Where(entry => entry.Key.Contains(keyword.ToLowerInvariant()))
+                .SelectMany(entry => entry.Value);
         public override string ToString() =>
             this.Index
                 .SelectMany(keyValue => keyValue.Value.Select(item => (keyword: keyValue.Key, item: item)))
