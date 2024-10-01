@@ -1,26 +1,35 @@
-﻿namespace Strategy;
+﻿using Strategy.Common;
+
+namespace Strategy;
 
 public class TakeTwoOffer
 {
     private Book First { get; }
     private Book Second { get; }
+    private Func<Money, Money> Modify { get; }
 
-    public TakeTwoOffer(Book first, Book second)
+    public TakeTwoOffer(Func<Money, Money> modify, Book first, Book second)
     {
         this.First = first;
         this.Second = second;
+        Modify = modify;
     }
 
-    public (Book first, Book second) Apply() => DeductCheaper(7);
+    public static TakeTwoOffer GetOneFree(Book first, Book second) =>
+        new TakeTwoOffer(price => price.Currency.Zero, first, second);
+    
+    public static TakeTwoOffer Deduct(Money amount, Book first, Book second) =>
+        new TakeTwoOffer(price => price - amount, first, second);
+
+    public (Book first, Book second) Apply() => DeductCheaper();
 
     private (Book expensive, Book cheap) Sort =>
         First.Price >= Second.Price ? (First, Second) : (Second, First);
 
-    private (Book first, Book second) DeductCheaper(decimal amount)
+    private (Book first, Book second) DeductCheaper()
     {
         var books = this.Sort;
         return (books.expensive, books.cheap.WithEffectivePrice(
-            books.cheap.Price.SubtractAmount(amount)));
+            Modify(books.cheap.Price)));
     }
-    
 }

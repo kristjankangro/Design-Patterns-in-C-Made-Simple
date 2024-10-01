@@ -6,3 +6,9 @@
 
 # application 
 * strategy pattern
+
+# module 14 intro to is strategy pattern delegate
+* inject from constructor > private Func<Money, Money> Modify { get; }
+* public static TakeTwoOffer GetOneFree
+
+# module 15 implementing strategies via interface
