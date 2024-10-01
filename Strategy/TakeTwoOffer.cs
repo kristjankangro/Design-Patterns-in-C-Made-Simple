@@ -1,35 +1,34 @@
-﻿using Strategy.Common;
-
-namespace Strategy;
+﻿using Strategy;
+using Strategy.Common;
 
 public class TakeTwoOffer
 {
-    private Book First { get; }
-    private Book Second { get; }
     private Func<Money, Money> Modify { get; }
 
-    public TakeTwoOffer(Func<Money, Money> modify, Book first, Book second)
+    public TakeTwoOffer(Func<Money, Money> modify)
     {
-        this.First = first;
-        this.Second = second;
-        Modify = modify;
+        this.Modify = modify;
     }
 
-    public static TakeTwoOffer GetOneFree(Book first, Book second) =>
-        new TakeTwoOffer(price => price.Currency.Zero, first, second);
-    
-    public static TakeTwoOffer Deduct(Money amount, Book first, Book second) =>
-        new TakeTwoOffer(price => price - amount, first, second);
+    public static TakeTwoOffer GetOneFree() =>
+        new TakeTwoOffer(price => price.Currency.Zero);
 
-    public (Book first, Book second) Apply() => DeductCheaper();
+    public static TakeTwoOffer Deduct(Money amount) =>
+        new TakeTwoOffer(price => price - amount);
 
-    private (Book expensive, Book cheap) Sort =>
-        First.Price >= Second.Price ? (First, Second) : (Second, First);
+    public (Book first, Book second) ApplyTo(Book first, Book second) =>
+        this.DeductFromCheaper(first, second);
 
-    private (Book first, Book second) DeductCheaper()
+    private (Book first, Book second) DeductFromCheaper(Book first, Book second)
     {
-        var books = this.Sort;
-        return (books.expensive, books.cheap.WithEffectivePrice(
-            Modify(books.cheap.Price)));
+        var books = this.Sort(first, second);
+        return (
+            books.expensive,
+            books.cheap.WithEffectivePrice(this.Modify(books.cheap.Price)));
     }
+
+    private (Book expensive, Book cheap) Sort(Book first, Book second) =>
+        first.Price >= second.Price
+            ? (first, second)
+            : (second, first);
 }
