@@ -15,3 +15,9 @@
 * IPriceModifier injected into TakeTwoOffer
 
 # module 16 augmenting
+* spill over
+* two prices
+
+# mod 17 power
+* explained, lots of Modifiers
+* introduce IDeduction
