@@ -1,4 +1,5 @@
 ﻿using Strategy;
+using Strategy.Modifiers;
 
-OfferCart.Apply(TakeTwoOffer.GetOneFree());
-OfferCart.Apply(TakeTwoOffer.Deduct(Deduction.GetActive()));
+OfferCart.Apply(new TakeTwoOffer(new GetOneFree()));
+OfferCart.Apply(new TakeTwoOffer(new DeductAmount(Deduction.GetActive())));

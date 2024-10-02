@@ -4,8 +4,6 @@ namespace Strategy;
 
 public class Deduction
 {
-    public static Money GetActive()
-    {
-        return new Money(7, new Currency("USD"));
-    }
+    //in real app, comes from db configurable field monthly special offer etc
+    public static Money GetActive() => new(7, new Currency("USD"));
 }

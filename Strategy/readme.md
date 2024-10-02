@@ -12,3 +12,4 @@
 * public static TakeTwoOffer GetOneFree
 
 # module 15 implementing strategies via interface
+* IPriceModifier injected into TakeTwoOffer

@@ -3,18 +3,12 @@ using Strategy.Common;
 
 public class TakeTwoOffer
 {
-    private Func<Money, Money> Modify { get; }
+    private IPriceModifier Modifier { get; }
 
-    public TakeTwoOffer(Func<Money, Money> modify)
+    public TakeTwoOffer(IPriceModifier modifier)
     {
-        this.Modify = modify;
+        this.Modifier = modifier;
     }
-
-    public static TakeTwoOffer GetOneFree() =>
-        new TakeTwoOffer(price => price.Currency.Zero);
-
-    public static TakeTwoOffer Deduct(Money amount) =>
-        new TakeTwoOffer(price => price - amount);
 
     public (Book first, Book second) ApplyTo(Book first, Book second) =>
         this.DeductFromCheaper(first, second);
@@ -24,7 +18,7 @@ public class TakeTwoOffer
         var books = this.Sort(first, second);
         return (
             books.expensive,
-            books.cheap.WithEffectivePrice(this.Modify(books.cheap.Price)));
+            books.cheap.WithEffectivePrice(this.Modifier.ApplyTo(books.cheap.Price)));
     }
 
     private (Book expensive, Book cheap) Sort(Book first, Book second) =>
