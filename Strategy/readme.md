@@ -13,3 +13,5 @@
 
 # module 15 implementing strategies via interface
 * IPriceModifier injected into TakeTwoOffer
+
+# module 16 augmenting

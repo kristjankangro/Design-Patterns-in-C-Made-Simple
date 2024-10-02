@@ -16,9 +16,11 @@ public class TakeTwoOffer
     private (Book first, Book second) DeductFromCheaper(Book first, Book second)
     {
         var books = this.Sort(first, second);
+        var prices = Modifier.ApplyTo(books.expensive.Price, books.cheap.Price);
         return (
-            books.expensive,
-            books.cheap.WithEffectivePrice(this.Modifier.ApplyTo(books.cheap.Price)));
+            books.expensive.WithEffectivePrice(prices.first),
+            books.cheap.WithEffectivePrice(prices.second)
+        );
     }
 
     private (Book expensive, Book cheap) Sort(Book first, Book second) =>
