@@ -1,17 +1,14 @@
 using Strategy;
 using Strategy.Common;
 
-public class Absolute : IPriceModifier
+public class Absolute : IDeduction
 {
-    public Absolute(Money amount)
-    {
-        Amount = amount;
-    }
-
     private Money Amount { get; }
+    public Absolute(Money amount) => Amount = amount;
 
-    public (Money first, Money second) ApplyTo(Money a, Money b)
+
+    public Money From(Money a, Money b)
     {
-        return (a, b >= Amount ? b - Amount : b.Currency.Zero);
+        return Amount;
     }
 }

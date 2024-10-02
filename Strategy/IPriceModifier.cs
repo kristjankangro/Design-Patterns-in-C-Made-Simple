@@ -4,5 +4,5 @@ namespace Strategy;
 
 public interface IPriceModifier
 {
-    (Money first, Money second) ApplyTo(Money price1, Money price2);
+    (Money first, Money second) ApplyTo(Money a, Money b);
 }

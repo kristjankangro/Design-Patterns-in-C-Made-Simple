@@ -5,5 +5,5 @@ namespace Strategy.Modifiers;
 
 public class GetOneFree : IPriceModifier
 {
-    public (Money first, Money second) ApplyTo(Money price1, Money price2) => (price1, price2.Currency.Zero);
+    public (Money first, Money second) ApplyTo(Money a, Money b) => (a, b.Currency.Zero);
 }

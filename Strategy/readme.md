@@ -21,3 +21,6 @@
 # mod 17 power
 * explained, lots of Modifiers
 * introduce IDeduction
+
+# mod 18 implementation of mod 17
+@1:22
