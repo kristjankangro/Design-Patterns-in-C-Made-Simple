@@ -1,8 +1,9 @@
 using Strategy.Common;
 
-namespace Strategy;
-
-public interface IDeduction
+namespace Strategy
 {
-    Money From(Money a, Money b);
+    public interface IDeduction
+    {
+        Money From(Money a, Money b);
+    }
 }

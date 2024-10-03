@@ -5,10 +5,7 @@ public class TakeTwoOffer
 {
     private IPriceModifier Modifier { get; }
 
-    public TakeTwoOffer(IPriceModifier modifier)
-    {
-        this.Modifier = modifier;
-    }
+    public TakeTwoOffer(IPriceModifier modifier) => this.Modifier = modifier;
 
     public (Book first, Book second) ApplyTo(Book first, Book second) =>
         this.DeductFromCheaper(first, second);
