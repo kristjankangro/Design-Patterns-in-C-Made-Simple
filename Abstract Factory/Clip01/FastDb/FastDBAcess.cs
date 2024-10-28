@@ -6,7 +6,7 @@ namespace Demo.Clip01.FastDb
     {
         public IConnection CreateConnection(string connectionString)
         {
-            throw new System.NotImplementedException();
+            return new Connection();
         }
 
         public ICommand CreateCommand(string commandText)
