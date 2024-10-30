@@ -6,8 +6,4 @@
     <RootNamespace>Demo</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Clip05\" />
-  </ItemGroup>
-
 </Project>
