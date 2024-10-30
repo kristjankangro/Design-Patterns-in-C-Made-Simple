@@ -6,8 +6,14 @@ namespace Demo.Clip01.FastDb
     {
         public IConnection CreateConnection(string connectionString)
         {
-            return new Connection();
+            return CreateConnection(new ConnectionData(connectionString));
         }
+
+        private IConnection CreateConnection(ConnectionData data)
+        {
+            return new Connection(data.Server, data.Database, data.Credentials);
+        }
+
 
         public ICommand CreateCommand(string commandText)
         {

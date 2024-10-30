@@ -2,7 +2,7 @@ using Demo.Clip01.Data;
 
 namespace Demo.Clip01.FastDb
 {
-    public class Connection
+    public class Connection : IConnection
     {
         private string ServerName { get; }
         private string Database { get; }
@@ -13,6 +13,21 @@ namespace Demo.Clip01.FastDb
             ServerName = serverName;
             Database = database;
             Credentials = credentials;
+        }
+
+        public void Connect(string connectionString)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Disconnect()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public object Execute(ICommand command, ITransaction transaction)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

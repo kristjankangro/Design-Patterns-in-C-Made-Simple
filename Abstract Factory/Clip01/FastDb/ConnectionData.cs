@@ -22,7 +22,18 @@ namespace Demo.Clip01.FastDb
             if (UnsupportedKeys.Any()) throw new ArgumentException("Unsupported connection string");
         }
         
-        private IEnumerable<string> UnsupportedKeys => KeyValues.Except(this.ServerKey);
-        private const string ServerKey = VALUE;
+        public string Server => KeyValues.TryGetValue(ServerKey, out string? server) ? server : "localhost";
+        public string Database => KeyValues[this.DatabaseKey];
+        public Credentials Credentials => new UserCredentials(UserName, Password);
+        
+        private string UserName => KeyValues[UserNameKey];
+        private string Password => KeyValues[PasswordKey];
+        private IEnumerable<string> UnsupportedKeys 
+            => KeyValues.Keys.Except(new []{this.ServerKey, this.DatabaseKey, this.UserNameKey, });
+        
+        private readonly string ServerKey = "Data Source";
+        private string DatabaseKey = "Initial Catalog";
+        private string UserNameKey = "UserName";
+        private string PasswordKey = "Password";
     }
 }
