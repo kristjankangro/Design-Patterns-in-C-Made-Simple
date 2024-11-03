@@ -1,11 +1,8 @@
 using System.ComponentModel;
-using Demo.AbstractFactory.FastDb;
-using Demo.AbstractFactory.FastDb.Commands;
-using Demo.Clip01.CheapDb;
-using Demo.Clip01.Data;
-using Transaction = Demo.AbstractFactory.FastDb.Transaction;
+using AbstractFactory.Data;
+using AbstractFactory.FastDb.Commands;
 
-namespace Demo.Clip01.FastDb
+namespace AbstractFactory.FastDb
 {
     public class Connection : IConnection
     {

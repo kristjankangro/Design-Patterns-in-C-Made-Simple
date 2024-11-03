@@ -1,4 +1,4 @@
-namespace Demo.AbstractFactory.FastDb.Commands
+namespace AbstractFactory.FastDb.Commands
 {
     public class DeleteCommand : Command<int>
     {

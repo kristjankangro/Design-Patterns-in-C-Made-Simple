@@ -1,4 +1,4 @@
-namespace Demo.AbstractFactory.FastDb
+namespace AbstractFactory.FastDb.Commands
 {
     public class UpdateCommand : Command<int>
     {

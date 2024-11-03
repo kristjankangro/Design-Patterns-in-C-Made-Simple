@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Demo.AbstractFactory.FastDb;
 
-namespace Demo.Clip01.FastDb
+namespace AbstractFactory.FastDb.Commands
 {
     public class SelectCommand : Command<IEnumerable<object>>
     {

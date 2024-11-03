@@ -1,7 +1,6 @@
 using System;
-using Demo.AbstractFactory.FastDb;
 
-namespace Demo.Clip01.FastDb
+namespace AbstractFactory.FastDb.Commands
 {
     public class InsertCommand : Command<(object key, Type keyType)>
     {

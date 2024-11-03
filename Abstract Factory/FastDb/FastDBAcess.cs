@@ -1,8 +1,7 @@
-using Demo.AbstractFactory.FastDb.Commands;
-using Demo.Clip01.Data;
-using Demo.Clip01.FastDb;
+using AbstractFactory.Data;
+using AbstractFactory.FastDb.Commands;
 
-namespace Demo.AbstractFactory.FastDb
+namespace AbstractFactory.FastDb
 {
     public class FastDBAcess : IDataAccess
     {

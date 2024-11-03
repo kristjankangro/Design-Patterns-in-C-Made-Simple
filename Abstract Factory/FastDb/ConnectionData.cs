@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Demo.Clip01.FastDb
+namespace AbstractFactory.FastDb
 {
     public class ConnectionData
     {

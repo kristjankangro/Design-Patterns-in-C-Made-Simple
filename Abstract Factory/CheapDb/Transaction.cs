@@ -1,7 +1,6 @@
-using Demo.Clip01.Data;
-using Demo.Clip01.FastDb;
+using AbstractFactory.Data;
 
-namespace Demo.AbstractFactory.FastDb
+namespace AbstractFactory.CheapDb
 {
     public class Transaction : ITransaction
     {

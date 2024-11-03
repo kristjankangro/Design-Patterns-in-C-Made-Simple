@@ -1,4 +1,4 @@
-namespace Demo.Clip01.FastDb
+namespace AbstractFactory.FastDb
 {
     public class UserCredentials : Credentials
     {

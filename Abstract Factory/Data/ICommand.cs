@@ -1,4 +1,4 @@
-namespace Demo.Clip01.Data
+namespace AbstractFactory.Data
 {
     public interface ICommand
     {

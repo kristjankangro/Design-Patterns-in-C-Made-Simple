@@ -1,6 +1,6 @@
-using Demo.Clip01.Data;
+using AbstractFactory.Data;
 
-namespace Demo.AbstractFactory.FastDb
+namespace AbstractFactory.FastDb
 {
     public abstract class Command<T> : ICommand
     {

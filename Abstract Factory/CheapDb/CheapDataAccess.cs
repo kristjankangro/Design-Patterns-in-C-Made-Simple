@@ -1,8 +1,8 @@
 using System;
 using System.Text.RegularExpressions;
-using Demo.Clip01.Data;
+using AbstractFactory.Data;
 
-namespace Demo.Clip01.CheapDb
+namespace AbstractFactory.CheapDb
 {
     public class CheapDataAccess : IDataAccess
     {
