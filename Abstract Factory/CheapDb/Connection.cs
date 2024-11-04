@@ -15,7 +15,10 @@ namespace AbstractFactory.CheapDb
             Password = password;
         }
 
-        public void Connect(string connectionString) => throw new System.NotImplementedException();
+        public void Connect()
+        {
+            
+        }
 
         public void Disconnect() => throw new System.NotImplementedException();
 

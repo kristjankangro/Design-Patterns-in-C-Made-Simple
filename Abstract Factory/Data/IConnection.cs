@@ -2,7 +2,7 @@ namespace AbstractFactory.Data
 {
     public interface IConnection
     {
-        void Connect(string connectionString);
+        void Connect();
         void Disconnect();
         object Execute(ICommand command, ITransaction transaction);
     }

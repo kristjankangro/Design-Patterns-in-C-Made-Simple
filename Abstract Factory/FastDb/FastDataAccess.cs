@@ -3,7 +3,7 @@ using AbstractFactory.FastDb.Commands;
 
 namespace AbstractFactory.FastDb
 {
-    public class FastDBAcess : IDataAccess
+    public class FastDataAccess : IDataAccess
     {
         public IConnection CreateConnection(string connectionString) =>
             CreateConnection(new ConnectionData(connectionString));

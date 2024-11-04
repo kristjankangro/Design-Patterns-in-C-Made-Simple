@@ -17,9 +17,9 @@ namespace AbstractFactory.FastDb
             Credentials = credentials;
         }
 
-        public void Connect(string connectionString) => throw new System.NotImplementedException();
+        public void Connect() { }
 
-        public void Disconnect() => throw new System.NotImplementedException();
+        public void Disconnect() { }
 
         public object Execute(ICommand command, ITransaction transaction)
         {
