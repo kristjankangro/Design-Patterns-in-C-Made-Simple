@@ -2,15 +2,15 @@ using AbstractFactory.Data;
 
 namespace AbstractFactory.FastDb
 {
-    public abstract class Command<T> : ICommand
+    public abstract class Command<TResult> : ICommand
     {
-        private string CommandText;
+        private string CommandText { get; }
 
-        public Command(string commandText)
+        public abstract TResult Execute(Transaction transaction);
+
+        protected Command(string commandText)
         {
-            CommandText = commandText;
+            this.CommandText = commandText;
         }
-
-        public abstract T Execute(Transaction transaction);
     }
 }

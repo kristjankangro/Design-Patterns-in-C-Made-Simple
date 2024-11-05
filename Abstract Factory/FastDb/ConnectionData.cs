@@ -18,7 +18,7 @@ namespace AbstractFactory.FastDb
                     pair => pair.keyValue[(pair.separtorPos + 1)..]
                 );
             
-            if (UnsupportedKeys.Any()) throw new ArgumentException("Unsupported connection string");
+            if (!UnsupportedKeys.Any()) throw new ArgumentException("Unsupported connection string");
         }
         
         public string Server => KeyValues.TryGetValue(ServerKey, out string? server) ? server : "localhost";
@@ -32,7 +32,7 @@ namespace AbstractFactory.FastDb
         
         private readonly string ServerKey = "Data Source";
         private string DatabaseKey = "Initial Catalog";
-        private string UserNameKey = "UserName";
+        private string UserNameKey = "User Id";
         private string PasswordKey = "Password";
     }
 }

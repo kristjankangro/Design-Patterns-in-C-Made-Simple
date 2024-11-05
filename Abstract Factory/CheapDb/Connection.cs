@@ -17,10 +17,11 @@ namespace AbstractFactory.CheapDb
 
         public void Connect()
         {
-            
         }
 
-        public void Disconnect() => throw new System.NotImplementedException();
+        public void Disconnect()
+        {
+        }
 
         public object Execute(ICommand command, ITransaction transaction)
         {
@@ -29,7 +30,7 @@ namespace AbstractFactory.CheapDb
 
         public object Execute(Command command, Transaction transaction) => SendCommand(command.Text, transaction);
 
-        public  object SendCommand(string commandText) => new object();
+        public object SendCommand(string commandText) => new object();
         private object SendCommand(string commandText, Transaction transaction) => new object();
     }
 }

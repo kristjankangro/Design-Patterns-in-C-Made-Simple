@@ -1,4 +1,5 @@
 ﻿using System;
+using AbstractFactory.CheapDb;
 using AbstractFactory.Data;
 using AbstractFactory.FastDb;
 
@@ -13,7 +14,10 @@ namespace AbstractFactory
 
             new HeadHunter(connStr, gateway).AddEmployee("Kristjan");
 
-
+            IDataAccess db = new CheapDataAccess();
+            
+            new HeadHunter(connStr, db).AddEmployee("Kristjan");
+            
             Console.WriteLine();
             Console.Write("Press ENTER to continue . . . ");
             Console.ReadLine();

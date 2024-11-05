@@ -7,37 +7,37 @@ namespace AbstractFactory.CheapDb
     public class CheapDataAccess : IDataAccess
     {
         public IConnection CreateConnection(string connectionString) =>
-            IsLocalhost(connectionString)
+            this.IsLocalhost(connectionString)
                 ? new Connection(
-                    DataBase(connectionString),
-                    UserName(connectionString),
-                    Password(connectionString))
-                : throw new ArgumentException("Invalid connection string");
+                    this.Database(connectionString),
+                    this.UserName(connectionString),
+                    this.Password(connectionString))
+                : throw new ArgumentException("Unsupported remote server.");
+
+        public ICommand CreateCommand(string commandText) => 
+            new Command(commandText);
+
+        public ITransaction CreateTransaction(IConnection connection) => 
+            new Transaction((Connection)connection);
 
         private bool IsLocalhost(string connectionString) =>
-            ValueOf(connectionString, "Data Source", "localhost") == "localhost";
+            this.ValueOf(connectionString, "Data Source", "localhost") == "localhost";
 
-        private string DataBase(string connectionString) => ValueOf(connectionString, "DataBase");
-        private string UserName(string connectionString) => ValueOf(connectionString, "User Id");
-        private string Password(string connectionString) => ValueOf(connectionString, "Password");
+        private string Database(string connectionString) => 
+            this.ValueOf(connectionString, "Initial Catalog");
 
-        private string ValueOf(string connectionString, string key, string substitution) =>
-            Regex.Match(connectionString, $"{key}=(?<value[^;]+>);")
-                is { Success: true } pair
-                ? pair.Groups["value"].Value
-                : substitution;
+        private string UserName(string connectionString) =>
+            this.ValueOf(connectionString, "User Id");
+
+        private string Password(string connectionString) =>
+            this.ValueOf(connectionString, "Password");
 
         private string ValueOf(string connectionString, string key) =>
-            ValueOf(connectionString, key, string.Empty);
+            this.ValueOf(connectionString, key, string.Empty);
 
-        public ICommand CreateCommand(string commandText)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public ITransaction CreateTransaction(IConnection connection)
-        {
-            throw new System.NotImplementedException();
-        }
+        private string ValueOf(string connectionString, string key, string substitute) =>
+            Regex.Match(connectionString, $"{key}=(?<value>[^;]+);") is Match pair && pair.Success
+                ? pair.Groups["value"].Value
+                : substitute;
     }
 }

@@ -9,14 +9,18 @@ namespace AbstractFactory.CheapDb
 
         public Transaction(Connection connection)
         {
-            Connection = connection;
-            TransactionId = (int)connection.SendCommand("Begin Transaction");
+            this.Connection = connection;
+            this.TransactionId =
+                connection.SendCommand("BEGIN TRANSACTION") is int id ? id : -1;
         }
 
-        public void Commit() => Connection.SendCommand("Commit Transaction");
+        public void Commit() =>
+            this.Connection.SendCommand("COMMIT TRANSACTION");
 
-        public void Rollback() => Connection.SendCommand("Rollback Transaction");
+        public void Rollback() =>
+            this.Connection.SendCommand("ROLLBACK TRANSACTION");
 
-        public override string ToString() => $"TransactionId:(Id={TransactionId})";
+        public override string ToString() =>
+            $"Transaction(Id={this.TransactionId})";
     }
 }

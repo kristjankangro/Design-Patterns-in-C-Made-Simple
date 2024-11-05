@@ -1,22 +1,21 @@
+using System;
 using AbstractFactory.Data;
 
 namespace AbstractFactory.FastDb
 {
     public class Transaction : ITransaction
     {
-        private int TransactionId { get; }
-        private Connection Connection { get; }
+        private Guid Id { get; } = Guid.NewGuid();
 
-        public Transaction(Connection connection)
+        public void Commit()
         {
-            Connection = connection;
-            TransactionId = (int)connection.SendCommand("Begin Transaction");
         }
 
-        public void Commit() => Connection.SendCommand("Commit Transaction");
+        public void Rollback()
+        {
+        }
 
-        public void Rollback() => Connection.SendCommand("Rollback Transaction");
-
-        public override string ToString() => $"TransactionId:(Id={TransactionId})";
+        public override string ToString() =>
+            $"Transaction(Id={this.Id})";
     }
 }
