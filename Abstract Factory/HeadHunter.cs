@@ -34,7 +34,6 @@ public class HeadHunter
         string selectReport = select is IEnumerable<string> nameSequence ? string.Join(", ", nameSequence.ToArray()) : "";
 
         Console.WriteLine("Report of employee: {0}", selectReport);
-            ;
         
         transaction.Commit();
         connection.Disconnect(); //should be put into finally block of try catch

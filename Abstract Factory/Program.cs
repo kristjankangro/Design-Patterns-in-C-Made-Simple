@@ -10,6 +10,11 @@ namespace AbstractFactory
         static void Main(string[] args)
         {
             var connStr = @"Data Source=localhost;Initial Catalog=DemoDB;User Id=my;Password=name";
+            
+            //supports only localhost and fails 
+            var connStrFailur = @"Data Source=SomeotherServer;Initial Catalog=DemoDB;User Id=my;Password=name";
+            
+            
             IDataAccess gateway = new FastDataAccess();
 
             new HeadHunter(connStr, gateway).AddEmployee("Kristjan");
