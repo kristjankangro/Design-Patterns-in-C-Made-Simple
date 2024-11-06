@@ -21,7 +21,7 @@ public class HeadHunter
         IConnection connection = DatabaseGateway.CreateConnection(ConnectionString);
         connection.Connect();
 
-        ITransaction transaction = DatabaseGateway.CreateTransaction(connection);
+        ITransaction transaction = connection.BeginTransaction();
         
         ICommand command = DatabaseGateway.CreateCommand("INSERT INTO employees (name) VALUES (@name)");
         var insert = connection.Execute(command, transaction);

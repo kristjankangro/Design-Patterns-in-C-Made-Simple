@@ -24,6 +24,11 @@ namespace AbstractFactory.FastDb
         public object Execute(ICommand command, ITransaction transaction) =>
             this.Execute(command, (FastTransaction) transaction);
 
+        public ITransaction BeginTransaction()
+        {
+            return new FastTransaction(this);
+        }
+
         private object Execute(ICommand command, FastTransaction transaction) =>
             command is SelectCommand select ? select.Execute(transaction)
             : command is InsertCommand insert ? insert.Execute(transaction).key

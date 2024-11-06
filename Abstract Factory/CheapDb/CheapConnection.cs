@@ -22,6 +22,8 @@ namespace AbstractFactory.CheapDb
         public object Execute(ICommand command, ITransaction transaction) =>
             this.Execute((CheapCommand) command, (CheapTransaction) transaction);
 
+        public ITransaction BeginTransaction() => new CheapTransaction(this);
+
         public object Execute(CheapCommand command, CheapTransaction transaction) =>
             this.SendCommand(command.Text, transaction);
 

@@ -5,15 +5,9 @@ namespace AbstractFactory.FastDb
 {
     public class FastDataAccess : IDataAccess
     {
-        public IConnection CreateConnection(string connectionString) =>
-            this.CreateConnection(new ConnectionData(connectionString));
+        public IConnection CreateConnection(string connectionString) => CreateConnection(new ConnectionData(connectionString));
 
-        private IConnection CreateConnection(ConnectionData data) =>
-            new FastConnection(data.Server, data.Database, data.Credentials);
-
-        public ITransaction CreateTransaction(IConnection connection) => CreateTransaction((FastConnection)connection);
-
-        private ITransaction CreateTransaction(FastConnection connection) => new FastTransaction(connection);
+        private IConnection CreateConnection(ConnectionData data) => new FastConnection(data.Server, data.Database, data.Credentials);
 
         public ICommand CreateCommand(string commandText) =>
             commandText.StartsWith("INSERT INTO ") ? new InsertCommand(commandText)
