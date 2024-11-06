@@ -1,11 +1,11 @@
-namespace AbstractFactory.FastDb.Commands
+﻿namespace AbstractFactory.FastDb.Commands
 {
-    public class UpdateCommand : Command<int>
+    class UpdateCommand : FastCommand<int>
     {
         public UpdateCommand(string commandText) : base(commandText)
         {
         }
 
-        public override int Execute(Transaction transaction) => 2;
+        public override int Execute(FastTransaction transaction) => 2;
     }
 }

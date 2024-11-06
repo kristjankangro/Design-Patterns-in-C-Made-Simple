@@ -1,14 +1,14 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AbstractFactory.FastDb.Commands
 {
-    class SelectCommand : Command<IEnumerable<object>>
+    class SelectCommand : FastCommand<IEnumerable<object>>
     {
         public SelectCommand(string commandText) : base(commandText)
         {
         }
 
-        public override IEnumerable<object> Execute(Transaction transaction) =>
+        public override IEnumerable<object> Execute(FastTransaction transaction) =>
             new[] {"Jack", "Joe", "Jill"};
     }
 }

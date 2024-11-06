@@ -3,7 +3,7 @@ namespace AbstractFactory.Data
     public interface IDataAccess
     {
         IConnection CreateConnection(string connectionString);
-        ICommand CreateCommand(string commandText);
         ITransaction CreateTransaction(IConnection connection);
+        ICommand CreateCommand(string commandText);
     }
 }

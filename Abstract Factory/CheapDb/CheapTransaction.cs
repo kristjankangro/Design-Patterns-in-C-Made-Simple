@@ -1,13 +1,13 @@
-using AbstractFactory.Data;
+﻿using AbstractFactory.Data;
 
 namespace AbstractFactory.CheapDb
 {
-    public class Transaction : ITransaction
+    public class CheapTransaction : ITransaction
     {
         private int TransactionId { get; }
-        private Connection Connection { get; }
+        private CheapConnection Connection { get; }
 
-        public Transaction(Connection connection)
+        public CheapTransaction(CheapConnection connection)
         {
             this.Connection = connection;
             this.TransactionId =

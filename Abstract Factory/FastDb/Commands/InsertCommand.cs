@@ -1,13 +1,14 @@
-using System;
+﻿using System;
 
 namespace AbstractFactory.FastDb.Commands
 {
-    public class InsertCommand : Command<(object key, Type keyType)>
+    class InsertCommand : FastCommand<(object key, Type keyType)>
     {
         public InsertCommand(string commandText) : base(commandText)
         {
         }
 
-        public override (object key, Type keyType) Execute(Transaction transaction) => (17, typeof(int));
+        public override (object key, Type keyType) Execute(FastTransaction transaction) =>
+            (17, typeof(int));
     }
 }

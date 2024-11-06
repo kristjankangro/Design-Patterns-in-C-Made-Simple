@@ -16,3 +16,5 @@
 * subtle coupling with concrete
 * construction process makes libs operate differently
 * attempts to smooth differences out
+
+# 6 Factory method pattern (Abstract Factory project) 

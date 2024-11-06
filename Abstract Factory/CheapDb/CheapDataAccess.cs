@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
 using AbstractFactory.Data;
 
@@ -8,17 +8,20 @@ namespace AbstractFactory.CheapDb
     {
         public IConnection CreateConnection(string connectionString) =>
             this.IsLocalhost(connectionString)
-                ? new Connection(
+                ? new CheapConnection(
                     this.Database(connectionString),
                     this.UserName(connectionString),
                     this.Password(connectionString))
                 : throw new ArgumentException("Unsupported remote server.");
 
         public ICommand CreateCommand(string commandText) => 
-            new Command(commandText);
+            new CheapCommand(commandText);
 
-        public ITransaction CreateTransaction(IConnection connection) => 
-            new Transaction((Connection)connection);
+        public ITransaction CreateTransaction(IConnection connection) =>
+            this.CreateTransaction((CheapConnection) connection);
+
+        private ITransaction CreateTransaction(CheapConnection connection) =>
+            new CheapTransaction(connection);
 
         private bool IsLocalhost(string connectionString) =>
             this.ValueOf(connectionString, "Data Source", "localhost") == "localhost";
