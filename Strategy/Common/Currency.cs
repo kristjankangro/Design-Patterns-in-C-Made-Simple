@@ -9,14 +9,11 @@ public class Currency : IEquatable<Currency>
         this.Symbol = symbol;
     }
 
-    public Money Zero => 
-        new Money(0, this);
+    public Money Zero => new Money(0, this);
 
-    public Money MinPositiveValue =>
-        new Money(.01M, this);
+    public Money MinPositiveValue => new Money(.01M, this);
 
-    public Money Of(decimal amount) =>
-        new Money(amount, this);
+    public Money Of(decimal amount) => new Money(amount, this);
 
     public override string ToString() =>
         this.Symbol;

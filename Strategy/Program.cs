@@ -32,22 +32,11 @@ IEnumerable<Book> results = sequence.Where(book => book.Price <= new Money(29, b
 
 
 // module 29 holding state behind a factory method
+// module 30 fixing parameters with Factory method
+var printer = new InvoicePrinter();
+Money PackagingCost(Currency currency) => currency.Of(1);
 Book product = new Book("Desing patterns", new Money(29.35M, new Currency("USD")));
-PrintInvoiceFor(product, .21M);
-
 Book product2 = new Book("The Little Prince", new Money(13.45M, new Currency("EUR")));
-PrintInvoiceFor(product2, .2M);
 
-void PrintInvoiceFor(Book product, decimal taxRate)
-{
-    Console.WriteLine(
-        $"{Environment.NewLine}{(product.Title + " ").PadRight(30, '.')}" +
-        $"{product.Price,10}"
-    );
-    Money tax = product.Price * taxRate;
-    Console.WriteLine($"{"Tax ".PadRight(30, '.')}{tax,10}");
-    
-    Money total = product.Price + tax;
-    Console.WriteLine($"{new string('_', 41)}{Environment.NewLine}{Environment.NewLine}" +
-                      $"{"Total".PadRight(30, '.')}{total,10}{Environment.NewLine}");
-}
+printer.PrintInvoiceFor(product, .21M, PackagingCost);
+printer.PrintInvoiceFor(product2, .2M, PackagingCost);
