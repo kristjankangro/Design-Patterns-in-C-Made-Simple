@@ -22,6 +22,8 @@
         public static Money operator *(Money amount, decimal factor) =>
             new Money(amount.Amount * factor, amount.Currency);
 
+        public Money Scale(decimal factor) => this * factor;
+        
         public static Money operator *(decimal factor, Money amount) =>
             new Money(amount.Amount * factor, amount.Currency);
 
