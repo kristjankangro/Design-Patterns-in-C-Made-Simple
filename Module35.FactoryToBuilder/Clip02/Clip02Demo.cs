@@ -17,9 +17,17 @@ namespace Demo.Clip02
 
                 builder = FillCredentials(builder);
                 if (builder.CanBuild()) Console.WriteLine("Safe to build");
-                
+
                 var connStr = builder.Build();
                 Console.WriteLine(connStr);
+
+                Console.WriteLine(
+                    new ConnectionStringBuilder()
+                        .WithDataSource("localhost", 1435)
+                        .WithInitialCatalog("DemoDB")
+                        .UseIntegratedSecurity()
+                        .Build()
+                );
             }
             catch (Exception e)
             {
