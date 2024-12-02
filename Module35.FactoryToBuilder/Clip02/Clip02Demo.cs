@@ -17,6 +17,7 @@ namespace Demo.Clip02
 
                 builder = FillCredentials(builder);
                 if (builder.CanBuild()) Console.WriteLine("Safe to build");
+                
                 var connStr = builder.Build();
                 Console.WriteLine(connStr);
             }
