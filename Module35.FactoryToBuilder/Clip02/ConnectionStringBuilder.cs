@@ -23,6 +23,7 @@ namespace Demo.Clip02
             InitialCatalog = catalog;
             return this;
         }
+
         public ConnectionStringBuilder WithCredentials(string userId, string password)
         {
             UserId = userId;
@@ -30,13 +31,22 @@ namespace Demo.Clip02
             return this;
         }
 
-        public string Build() => 
+        public bool CanBuild() =>
+            !string.IsNullOrEmpty(DataSource) &&
+            !string.IsNullOrEmpty(InitialCatalog) &&
+            !string.IsNullOrEmpty(UserId) &&
+            Password is not null;
+
+        public string Build() =>
+            CanBuild() ? SafeBuild() : throw new InvalidOperationException("Can't build connection string");
+
+        public string SafeBuild() =>
             $"Data Source={this.Escape(Port < 0 ? DataSource : $"{DataSource},{Port}")};" +
             $"Initial Catalog={this.Escape(InitialCatalog)};" +
-            (IntegratedSecurity 
+            (IntegratedSecurity
                 ? "Integrated Security=true"
                 : $"User Id={this.Escape(UserId)};Password={this.Escape(Password)}");
-        
+
         private string Escape(string value) =>
             ";' \t".Any(value.Contains) ? $"\"{value.Replace("\"", "\"\"")}\""
             : value.Contains("\"") ? $"'{value}'"
