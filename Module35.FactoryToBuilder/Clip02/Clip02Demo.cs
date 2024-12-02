@@ -7,6 +7,16 @@ namespace Demo.Clip02
         private ConnectionStringBuilder FillCredentials(ConnectionStringBuilder partialbuilder) =>
             partialbuilder.WithCredentials("my", "name");
 
+        private void DoStuff(Func<string> doStuff)
+        {
+            var cs = doStuff();
+        }
+        
+        private void DoStuff(Func<string, string, string> doStuff)
+        {
+            var cs = doStuff("my", "name");
+        }
+
         protected override void Implementation()
         {
             try
@@ -28,6 +38,16 @@ namespace Demo.Clip02
                         .UseIntegratedSecurity()
                         .Build()
                 );
+                DoStuff(new ConnectionStringBuilder()
+                    .WithDataSource("localhost", 1435)
+                    .WithInitialCatalog("DemoDB")
+                    .UseIntegratedSecurity()
+                    .AsFactory());
+
+                DoStuff((userId, password) => new ConnectionStringBuilder()
+                    .WithDataSource("localhost")
+                    .WithInitialCatalog("DemoDB")
+                    .WithCredentials(userId, password).Build());
             }
             catch (Exception e)
             {

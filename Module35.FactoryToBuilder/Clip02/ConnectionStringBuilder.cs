@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Demo.Clip02
 {
@@ -8,10 +9,10 @@ namespace Demo.Clip02
         private string DataSource { get; set; }
         private int Port { get; set; } = 1433;
         private string InitialCatalog { get; set; }
-        
+
         private string Security { get; set; }
         private bool IsSecurityValid { get; set; }
-        
+
         private string TimeoutSegment { get; set; } = string.Empty;
         private string ProviderSegment { get; set; } = string.Empty;
 
@@ -26,7 +27,7 @@ namespace Demo.Clip02
             TimeoutSegment = $"; Connect Timeout={seconds}";
             return this;
         }
-        
+
         public ConnectionStringBuilder WithProvider(string name)
         {
             ProviderSegment ??= $"Provider={Escape(name)};";
@@ -73,6 +74,10 @@ namespace Demo.Clip02
 
         public string Build() =>
             CanBuild() ? SafeBuild() : throw new InvalidOperationException("Can't build connection string");
+
+        public Func<string> AsFactory() => CanBuild()
+            ? (Func<string>)SafeBuild
+            : throw new InvalidOperationException("Can't build connection string");
 
         public string SafeBuild() =>
             ProviderSegment +
