@@ -20,7 +20,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module44.FluentBuilder", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImmutableBuilder", "Module45.ImmutableBuilder\ImmutableBuilder.csproj", "{FBE60D90-1668-49B5-8F86-DD2BD583BBEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Module46.ShamelessImmutabilityBuilder\Demo.csproj", "{0078E4AB-2E67-4DD9-8598-E68F99112B0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module46.ImmutableBuilder", "Module46.ShamelessImmutabilityBuilder\Module46.ImmutableBuilder.csproj", "{0078E4AB-2E67-4DD9-8598-E68F99112B0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositePattern", "CompositePattern\CompositePattern.csproj", "{9ECBDD72-1C15-4B81-9E54-30145F1347DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,5 +74,9 @@ Global
 		{0078E4AB-2E67-4DD9-8598-E68F99112B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0078E4AB-2E67-4DD9-8598-E68F99112B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0078E4AB-2E67-4DD9-8598-E68F99112B0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ECBDD72-1C15-4B81-9E54-30145F1347DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ECBDD72-1C15-4B81-9E54-30145F1347DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ECBDD72-1C15-4B81-9E54-30145F1347DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ECBDD72-1C15-4B81-9E54-30145F1347DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

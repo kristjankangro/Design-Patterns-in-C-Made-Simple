@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Demo.Clip07.Data;
 
@@ -6,43 +7,49 @@ namespace Demo.Clip07
 {
     public class BooksBuilder
     {
-        private IDictionary<int, DbCategory> CategoryRecords { get; set; } = 
-            new Dictionary<int, DbCategory>();
+        private ImmutableDictionary<int, DbCategory> CategoryRecords { get; }
 
-        private IEnumerable<DbBook> BookRecords { get; set; } =
-            Enumerable.Empty<DbBook>();
+        private ImmutableList<DbBook> BookRecords { get; }
 
-        private IDictionary<int, Category> Categories { get; } = new Dictionary<int, Category>();
-
-        public BooksBuilder WithCategories(IEnumerable<DbCategory> rows)
+        public BooksBuilder() : this(ImmutableDictionary<int, DbCategory>.Empty, ImmutableList<DbBook>.Empty)
         {
-            this.CategoryRecords = rows.ToDictionary(row => row.Id);
-            return this;
         }
 
-        public BooksBuilder WithBooks(IEnumerable<DbBook> rows)
+        private BooksBuilder(ImmutableDictionary<int, DbCategory> categoryRecords, ImmutableList<DbBook> bookRecords)
         {
-            this.BookRecords = rows.ToList();
-            return this;
+            CategoryRecords = categoryRecords;
+            BookRecords = bookRecords;
         }
 
-        public IEnumerable<Book> Build() =>
+        public BooksBuilder WithCategories(IEnumerable<DbCategory> rows) =>
+            new BooksBuilder(
+                CategoryRecords.AddRange(rows.Select(row => KeyValuePair.Create(row.Id, row))),
+                BookRecords
+            );
+
+        public BooksBuilder WithBooks(IEnumerable<DbBook> rows) =>
+            new BooksBuilder(
+                CategoryRecords, BookRecords.AddRange(rows));
+
+        public IEnumerable<Book> Build() => Build(new Dictionary<int, Category>());
+        
+        private IEnumerable<Book> Build(IDictionary<int, Category> cache) =>
             this.BookRecords.Select(record =>
-                new Book(record.Id, record.Title, this.GetCategory(record.CategoryId)));
+                new Book(record.Id, record.Title, this.GetCategory(record.CategoryId, cache)));
 
-        private Category GetCategory(int id) =>
-            this.Categories.TryGetValue(id, out Category existing) ? existing
-            : this.CreateCategory(id);
+        private Category GetCategory(int id, IDictionary<int, Category> cache) =>
+            cache.TryGetValue(id, out Category existing) ? existing
+            : this.CreateCategory(id, cache);
 
-        private Category CreateCategory(int id)
+        private Category CreateCategory(int id, IDictionary<int, Category> cache)
         {
             DbCategory category = this.CategoryRecords[id];
 
             Category result = category.ParentId.HasValue 
-                ? this.GetCategory(category.ParentId.Value).Subcategory(id, category.Name)
+                ? this.GetCategory(category.ParentId.Value, cache).Subcategory(id, category.Name)
                 : Category.CreateRoot(id, category.Name);
 
-            this.Categories[id] = result;
+            cache[id] = result;
             return result;
         }
     }
