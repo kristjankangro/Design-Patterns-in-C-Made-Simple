@@ -4,50 +4,24 @@ namespace Demo.Clip02
 {
     class Clip02Demo : Common.Demo
     {
-        private ConnectionStringBuilder FillCredentials(ConnectionStringBuilder partialbuilder) =>
-            partialbuilder.WithCredentials("my", "name");
-
-        private void DoStuff(Func<string> doStuff)
-        {
-            var cs = doStuff();
-        }
-        
-        private void DoStuff(Func<string, string, string> doStuff)
-        {
-            var cs = doStuff("my", "name");
-        }
-
         protected override void Implementation()
         {
             try
             {
-                var builder = new ConnectionStringBuilder()
-                    .WithDataSource("localhost")
-                    .WithInitialCatalog("DemoDB");
-
-                builder = FillCredentials(builder);
-                if (builder.CanBuild()) Console.WriteLine("Safe to build");
-
-                var connStr = builder.Build();
-                Console.WriteLine(connStr);
-
                 Console.WriteLine(
-                    new ConnectionStringBuilder()
-                        .WithDataSource("localhost", 1435)
-                        .WithInitialCatalog("DemoDB")
-                        .UseIntegratedSecurity()
+                    ConnectionStringBuilder.WithCredentials("DemoDB", "localhost", "my", "name")
+                        .WithTimeout(11)
                         .Build()
                 );
-                DoStuff(new ConnectionStringBuilder()
-                    .WithDataSource("localhost", 1435)
-                    .WithInitialCatalog("DemoDB")
-                    .UseIntegratedSecurity()
-                    .AsFactory());
+                Console.WriteLine(
+                    ConnectionStringBuilder.UsingIntegratedSecurity("DemoDB", "localhost", 1435)
+                        .WithProvider("System.Data.SqlClient")
+                        .Build()
+                );
 
-                DoStuff((userId, password) => new ConnectionStringBuilder()
-                    .WithDataSource("localhost")
-                    .WithInitialCatalog("DemoDB")
-                    .WithCredentials(userId, password).Build());
+                Console.WriteLine(
+                    ConnectionStringBuilder.UsingIntegratedSecurity("DemoDB", "localhost", 1435).Build()
+                );
             }
             catch (Exception e)
             {
