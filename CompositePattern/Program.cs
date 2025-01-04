@@ -1,12 +1,12 @@
 ﻿using System;
-using Demo.Clip01;
+using CompositePattern.Module48;
 using Demo.Clip02;
 using Demo.Clip03;
 using Demo.Clip04;
 using Demo.Clip05;
 using Demo.Clip06;
 
-namespace Demo
+namespace CompositePattern
 {
     class Program
     {

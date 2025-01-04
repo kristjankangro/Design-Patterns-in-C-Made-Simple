@@ -1,19 +1,28 @@
-﻿using System;
+﻿using System.Linq;
 
-namespace Demo.Clip01
+namespace CompositePattern.Module48
 {
     public class Book
     {
         public string Title { get; }
-        public string Author { get; }
+        public string[] Authors { get; }
 
-        public Book(string title, string author)
+        public Book(string title, string author, params string[] otherAuthors)
         {
             this.Title = title;
-            this.Author = author;
+            this.Authors = new[] { author }.Concat(otherAuthors).ToArray();
         }
 
         public override string ToString() =>
-            $"{this.Author}, {this.Title}";
+            $"{AuthorsToString}, {this.Title}";
+
+        private string AuthorsToString =>
+            Authors.Length switch
+            {
+                0 => "Anonymous",
+                1 => Authors[0],
+                2 => $"{Authors[0]}, {Authors[1]}",
+                _ => $"{Authors[0]} et al."
+            };
     }
 }

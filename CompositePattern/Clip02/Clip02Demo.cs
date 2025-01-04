@@ -1,4 +1,5 @@
 ﻿using System;
+using CompositePattern.Clip02;
 
 namespace Demo.Clip02
 {

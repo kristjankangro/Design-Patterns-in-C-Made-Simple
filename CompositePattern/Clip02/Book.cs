@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Demo.Clip02
+namespace CompositePattern.Clip02
 {
     public class Book
     {
