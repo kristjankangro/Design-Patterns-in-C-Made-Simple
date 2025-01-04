@@ -1,14 +1,13 @@
 ﻿using System;
-using ComplexBuilder.ComplexBuilders;
-using FluentBuilder.Clip01;
+using FluentBuilder.Clip05;
 
-namespace ComplexBuilder
+namespace FluentBuilder
 {
     class Program
     {
         static void Main(string[] args)
         {
-            new Clip01Demo().Run();
+            new Clip05Demo().Run();
 
             Console.WriteLine();
             Console.Write("Press ENTER to continue . . . ");

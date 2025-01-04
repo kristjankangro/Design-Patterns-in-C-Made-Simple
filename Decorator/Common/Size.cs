@@ -1,4 +1,4 @@
-﻿namespace Demo.Common
+﻿namespace FluentBuilder.Common
 {
     public class Size
     {

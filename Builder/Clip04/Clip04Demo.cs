@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Demo.Clip04
+namespace FluentBuilder.Clip04
 {
     class Clip04Demo : Common.Demo
     {

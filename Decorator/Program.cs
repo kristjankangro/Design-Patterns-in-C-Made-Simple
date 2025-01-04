@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using Demo.Clip01;
+using FluentBuilder.Clip01;
 
 new DemoRunner().Run();
 

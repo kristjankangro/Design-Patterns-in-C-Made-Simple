@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace BuilderDemo
 {
-    class BuilderDemo : Demo.Common.Demo
+    class BuilderDemo : FluentBuilder.Common.Demo
     {
         private string Escape(string s) => ";' \t".ToCharArray().Any(s.Contains) ? $"\"{s.Replace("\"","\"\"")}\""
             : s.Contains("\"") ? $"'{s}'"

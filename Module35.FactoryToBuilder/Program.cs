@@ -1,7 +1,7 @@
 ﻿using System;
-using Demo.Clip02;
+using FluentBuilder.Clip02;
 
-namespace Demo
+namespace FluentBuilder
 {
     class Program
     {

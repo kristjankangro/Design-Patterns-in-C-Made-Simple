@@ -1,6 +1,6 @@
-using Demo.Common;
+using FluentBuilder.Common;
 
-namespace Demo.Clip01;
+namespace FluentBuilder.Clip01;
 
 class WrappedBaseBook : BaseBookDecorator
 {

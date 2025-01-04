@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Demo.Clip01
+namespace FluentBuilder.Clip01
 {
     public class Book
     {

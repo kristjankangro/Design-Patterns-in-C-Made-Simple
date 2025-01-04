@@ -3,7 +3,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Demo.Clip02
+namespace FluentBuilder.Clip02
 {
     public class ConnectionStringBuilder
     {

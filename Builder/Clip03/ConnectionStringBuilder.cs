@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Demo.Clip03
+namespace FluentBuilder.Clip03
 {
     class ConnectionStringBuilder
     {

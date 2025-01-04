@@ -1,7 +1,7 @@
-using Demo.Clip01.Abstractions;
-using Demo.Common;
+using FluentBuilder.Clip01.Abstractions;
+using FluentBuilder.Common;
 
-namespace Demo.Clip01;
+namespace FluentBuilder.Clip01;
 
 public class VideoKeywords : IWithKeywords, IEquatable<IWithKeywords>
 {

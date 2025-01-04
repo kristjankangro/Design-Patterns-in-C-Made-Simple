@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Demo.Clip02
+namespace FluentBuilder.Clip02
 {
     class Clip02Demo : Common.Demo
     {

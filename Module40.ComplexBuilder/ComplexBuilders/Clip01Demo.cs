@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Demo.Clip01;
+using FluentBuilder.Clip01;
 
 namespace ComplexBuilder.ComplexBuilders
 {

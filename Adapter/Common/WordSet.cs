@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 using System.Net.Mime;
 using System.Text.RegularExpressions;
 
-namespace Demo.Common;
+namespace FluentBuilder.Common;
 
 public class WordSet : IEnumerable<string>
 {

@@ -1,4 +1,4 @@
-namespace Demo.Clip01.Abstractions;
+namespace FluentBuilder.Clip01.Abstractions;
 
 public interface IWithKeywords
 {

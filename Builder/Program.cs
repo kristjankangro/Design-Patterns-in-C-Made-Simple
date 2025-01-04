@@ -1,10 +1,10 @@
 ﻿using System;
-using Demo.Clip02;
-using Demo.Clip03;
-using Demo.Clip04;
-using Demo.Clip05;
+using FluentBuilder.Clip02;
+using FluentBuilder.Clip03;
+using FluentBuilder.Clip04;
+using FluentBuilder.Clip05;
 
-namespace Demo
+namespace FluentBuilder
 {
     class Program
     {

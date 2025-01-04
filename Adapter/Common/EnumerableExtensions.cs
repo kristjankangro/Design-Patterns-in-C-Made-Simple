@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Demo.Common
+namespace FluentBuilder.Common
 {
     static class EnumerableExtensions
     {

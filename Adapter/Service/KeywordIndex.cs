@@ -1,7 +1,7 @@
-﻿using Demo.Clip01.Abstractions;
-using Demo.Common;
+﻿using FluentBuilder.Common;
+using FluentBuilder.Clip01.Abstractions;
 
-namespace Demo.Clip01
+namespace FluentBuilder.Clip01
 {
     public class KeywordIndex<TItem> where TItem : IWithKeywords
     {

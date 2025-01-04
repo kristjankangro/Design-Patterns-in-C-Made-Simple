@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Demo.Common
+namespace FluentBuilder.Common
 {
     abstract class Demo
     {

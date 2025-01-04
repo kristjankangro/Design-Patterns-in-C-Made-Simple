@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Demo.Clip05
+namespace FluentBuilder.Clip05
 {
     class ConnectionStringBuilder
     {

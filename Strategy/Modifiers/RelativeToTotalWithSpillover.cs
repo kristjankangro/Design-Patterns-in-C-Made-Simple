@@ -1,7 +1,7 @@
 ﻿using Strategy;
 using Strategy.Common;
 
-namespace Demo.Clip05.Modifiers
+namespace FluentBuilder.Clip05.Modifiers
 {
     public class RelativeToTotalWithSpillover : IPriceModifier
     {
