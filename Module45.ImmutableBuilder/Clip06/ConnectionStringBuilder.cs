@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Demo.Clip06
 {
-    class ConnectionStringBuilder : 
+    class ConnectionStringBuilder :
         IExpectsInitialCatalog, IExpectsAuthentication, IOptionalsBuilder
     {
         private string DataSource { get; set; }
@@ -12,66 +12,59 @@ namespace Demo.Clip06
         private string ConnectTimeoutSegment { get; set; } = string.Empty;
         private string ProviderSegment { get; set; }
 
-        private ConnectionStringBuilder() { }
+        public ConnectionStringBuilder(string dataSource, string initialCatalog, string security, string connectTimeoutSegment, string providerSegment)
+        {
+            DataSource = dataSource;
+            InitialCatalog = initialCatalog;
+            Security = security;
+            ConnectTimeoutSegment = connectTimeoutSegment;
+            ProviderSegment = providerSegment;
+        }
 
         public static IExpectsInitialCatalog WithDataSource(string dataSource) =>
-            new ConnectionStringBuilder() { DataSource = ValidDataSource(dataSource) };
+            new ConnectionStringBuilder(ValidDataSource(dataSource), null, null, string.Empty, null);
 
         public static IExpectsInitialCatalog WithDataSource(string dataSource, int port) =>
-            new ConnectionStringBuilder() { DataSource = $"{ValidDataSource(dataSource)},{port}"};
-        
-        private static string ValidDataSource(string dataSource) =>
-            !string.IsNullOrWhiteSpace(dataSource) ? dataSource 
-            : throw new ArgumentException(nameof(dataSource));
+            new ConnectionStringBuilder($"{ValidDataSource(dataSource)},{port}", null, null, string.Empty, null);
 
-        public IExpectsAuthentication WithInitialCatalog(string initialCatalog)
-        {
-            this.InitialCatalog = ValidInitialCatalog(initialCatalog);
-            return this;
-        }
+        private static string ValidDataSource(string dataSource) =>
+            string.IsNullOrWhiteSpace(dataSource)
+                ? throw new ArgumentException(nameof(dataSource))
+                : dataSource;
+
+        public IExpectsAuthentication WithInitialCatalog(string initialCatalog) =>
+            new ConnectionStringBuilder(DataSource, ValidInitialCatalog(initialCatalog), null, string.Empty, null);
 
         private static string ValidInitialCatalog(string initialCatalog) =>
-            !string.IsNullOrWhiteSpace(initialCatalog) ? initialCatalog
-            : throw new ArgumentException(nameof(initialCatalog));
+            string.IsNullOrWhiteSpace(initialCatalog)
+                ? throw new ArgumentException(nameof(initialCatalog))
+                : initialCatalog;
 
-        public IOptionalsBuilder WithCredentials(string userId, string password)
-        {
-            this.Security = Credentials(userId, password);
-            return this;
-        }
+        public IOptionalsBuilder WithCredentials(string userId, string password) =>
+            new ConnectionStringBuilder(DataSource, InitialCatalog, Credentials(userId, password), string.Empty, null);
 
         private static string Credentials(string user, string password) =>
             !string.IsNullOrWhiteSpace(user) && !(password is null)
                 ? $"User Id={Escape(user)};Password={Escape(password)}"
                 : throw new ArgumentException();
 
-        public IOptionalsBuilder UsingIntegratedSecurity()
-        {
-            this.Security = "Integrated Security=true";
-            return this;
-        }
+        public IOptionalsBuilder UsingIntegratedSecurity() =>
+            new ConnectionStringBuilder(DataSource, InitialCatalog, "Integrated Security=true", string.Empty, null);
 
-        public IOptionalsBuilder UsingTrustedConnection()
-        {
-            this.Security = "Trusted_Connection=yes";
-            return this;
-        }
-        
-        public IOptionalsBuilder WithConnectTimeout(int seconds)
-        {
-            this.ConnectTimeoutSegment = $";Connect Timeout={seconds}";
-            return this;
-        }
+        public IOptionalsBuilder UsingTrustedConnection() =>
+            new ConnectionStringBuilder(DataSource, InitialCatalog, "Trusted Connection=yes", string.Empty, null);
 
-        public IOptionalsBuilder WithProvider(string name)
-        {
-            this.ProviderSegment ??= $"Provider={Escape(ValidProvider(name))};";
-            return this;
-        }
+        public IOptionalsBuilder WithConnectTimeout(int seconds) =>
+            new ConnectionStringBuilder(DataSource, InitialCatalog, Security, $";Connect Timeout={seconds}", ProviderSegment);
+
+        public IOptionalsBuilder WithProvider(string name) =>
+            new ConnectionStringBuilder(DataSource, InitialCatalog, Security, ConnectTimeoutSegment,
+                ProviderSegment ?? $"Provider={Escape(ValidProvider(name))};");
 
         private string ValidProvider(string name) =>
-            !string.IsNullOrEmpty(name) ? name
-            : throw new ArgumentException(nameof(name));
+            !string.IsNullOrEmpty(name)
+                ? name
+                : throw new ArgumentException(nameof(name));
 
         public string Build() =>
             $"{this.ProviderSegment}Data Source={Escape(this.DataSource)};" +
