@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CompositePattern.Module51;
 
 namespace Demo.Clip04.Names
 {
