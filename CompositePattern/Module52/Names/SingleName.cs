@@ -1,6 +1,6 @@
-﻿namespace Demo.Clip05.Names
+﻿namespace CompositePattern.Module52.Names
 {
-    class SingleName : Name
+    public class SingleName : Name
     {
         public override string Printable { get; }
      

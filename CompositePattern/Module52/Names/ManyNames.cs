@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Demo.Clip05.Names
+namespace CompositePattern.Module52.Names
 {
     class ManyNames : Name
     {

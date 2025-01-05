@@ -1,4 +1,4 @@
-﻿namespace Demo.Clip05.Names
+﻿namespace CompositePattern.Module52.Names
 {
     class Anonymous : Name
     {

@@ -1,4 +1,6 @@
-﻿namespace Demo.Clip05
+﻿using CompositePattern.Module52;
+
+namespace Demo.Clip05
 {
     public class Book
     {

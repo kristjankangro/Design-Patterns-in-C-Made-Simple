@@ -3,6 +3,7 @@ using CompositePattern.Module48;
 using CompositePattern.Module49;
 using CompositePattern.Module50;
 using CompositePattern.Module51;
+using CompositePattern.Module52;
 using Demo.Clip03;
 using Demo.Clip04;
 using Demo.Clip05;
@@ -17,8 +18,8 @@ namespace CompositePattern
             // new Clip01Demo().Run();
             // new Module49.Module49().Run();
             // new Clip03Demo().Run();
-            new Clip04Demo().Run();
-            // new Clip05Demo().Run();
+            // new Clip04Demo().Run();
+            new Clip05Demo().Run();
             // new Clip06Demo().Run();
 
             Console.WriteLine();
