@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace CompositePattern.Clip02
+namespace CompositePattern.Module49
 {
     public class Book
     {

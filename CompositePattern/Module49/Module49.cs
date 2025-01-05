@@ -1,9 +1,8 @@
 ﻿using System;
-using CompositePattern.Clip02;
 
-namespace Demo.Clip02
+namespace CompositePattern.Module49
 {
-    class Clip02Demo : Common.Demo
+    class Module49 : Demo.Common.Demo
     {
         protected override void Implementation()
         {

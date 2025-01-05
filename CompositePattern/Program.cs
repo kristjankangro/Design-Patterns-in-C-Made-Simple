@@ -1,6 +1,6 @@
 ﻿using System;
 using CompositePattern.Module48;
-using Demo.Clip02;
+using CompositePattern.Module49;
 using Demo.Clip03;
 using Demo.Clip04;
 using Demo.Clip05;
@@ -12,8 +12,8 @@ namespace CompositePattern
     {
         static void Main(string[] args)
         {
-            new Clip01Demo().Run();
-            // new Clip02Demo().Run();
+            // new Clip01Demo().Run();
+            new Module49.Module49().Run();
             // new Clip03Demo().Run();
             // new Clip04Demo().Run();
             // new Clip05Demo().Run();
