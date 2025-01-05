@@ -1,4 +1,6 @@
-﻿namespace Demo.Clip06.Volumes
+﻿using CompositePattern.Module53;
+
+namespace Demo.Clip06.Volumes
 {
     class SeparateVolume : Volume
     {

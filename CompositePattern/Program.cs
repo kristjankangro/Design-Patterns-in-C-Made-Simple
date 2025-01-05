@@ -19,8 +19,8 @@ namespace CompositePattern
             // new Module49.Module49().Run();
             // new Clip03Demo().Run();
             // new Clip04Demo().Run();
-            new Clip05Demo().Run();
-            // new Clip06Demo().Run();
+            // new Clip05Demo().Run();
+            new Clip06Demo().Run();
 
             Console.WriteLine();
             Console.Write("Press ENTER to continue . . . ");

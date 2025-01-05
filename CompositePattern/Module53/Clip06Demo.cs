@@ -9,7 +9,7 @@ namespace Demo.Clip06
         {
             try
             {
-                Book book = new Book(title, author);
+                Book book = new Book(title, author, );
                 Console.WriteLine();
                 Console.WriteLine(book);
             }

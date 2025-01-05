@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CompositePattern.Module53;
 
 namespace Demo.Clip06.Volumes
 {
