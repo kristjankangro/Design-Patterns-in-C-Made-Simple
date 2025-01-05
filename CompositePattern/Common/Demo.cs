@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Demo.Common
+namespace CompositePattern.Common
 {
     abstract class Demo
     {

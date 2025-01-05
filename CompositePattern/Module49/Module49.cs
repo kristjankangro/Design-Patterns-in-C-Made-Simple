@@ -1,29 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CompositePattern.Module49
 {
-    class Module49 : Demo.Common.Demo
+    class Module49 : Common.Demo
     {
         protected override void Implementation()
         {
             try
             {
-                Book littlePrince = new Book(
-                    "The Little Prince", 
-                    "Antoine de Saint-Exupéry");
+                Book littlePrince = new Book("The Little Prince", new SingleName("Antoine de Saint-Exupéry"));
 
-                Book oosc = new Book(
-                    "Object-Oriented Software Construction", 
-                    "Bertrand Meyer");
+                Book oosc = new Book("Object-Oriented Software Construction", new SingleName("Bertrand Meyer"));
 
-                Book patterns = new Book(
-                    "Design Patterns",
-                    "Erich Gamma", "Richard Helm",
-                    "Ralph Johnson", "John Vlissides");
+                Book patterns = new Book("Design Patterns", new MultiName(new List<Name> {
+                        new SingleName("Erich Gamma"),
+                        new SingleName("Richard Helm"),
+                        new SingleName("Ralph Johnson"),
+                        new SingleName("John Vlissides")
+                    }));
 
-                Book nights1001 = new Book(
-                    "One Thousand and One Nights",
-                    "Anonymous");
+                Book nights1001 = new Book("One Thousand and One Nights", new Anonymous());
 
                 Console.WriteLine(littlePrince);
                 Console.WriteLine(oosc);

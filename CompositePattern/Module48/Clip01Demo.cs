@@ -2,7 +2,7 @@
 
 namespace CompositePattern.Module48;
 
-class Clip01Demo : Demo.Common.Demo
+class Clip01Demo : Common.Demo
 {
     protected override void Implementation()
     {

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Demo.Clip05
 {
-    class Clip05Demo : Common.Demo
+    class Clip05Demo : CompositePattern.Common.Demo
     {
         private void Display(string title, params string[] authors)
         {

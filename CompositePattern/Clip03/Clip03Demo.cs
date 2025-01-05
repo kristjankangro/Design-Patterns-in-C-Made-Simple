@@ -3,7 +3,7 @@ using Demo.Clip03.Names;
 
 namespace Demo.Clip03
 {
-    class Clip03Demo : Common.Demo
+    class Clip03Demo : CompositePattern.Common.Demo
     {
         protected override void Implementation()
         {
