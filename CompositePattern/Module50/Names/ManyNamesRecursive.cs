@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Demo.Clip03;
-using Demo.Clip03.Names;
 
 namespace CompositePattern.Module50.Names
 {
-    class ManyNames : Name
+    class ManyNamesRecursive : Name
     {
-        private List<SingleName> Names { get; }
+        private List<Name> Names { get; }
 
-        public ManyNames(IEnumerable<SingleName> names)
+        public ManyNamesRecursive(IEnumerable<Name> names)
         {
             this.Names = names.ToList();
         }
