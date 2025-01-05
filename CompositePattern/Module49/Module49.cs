@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CompositePattern.Module49.Names;
 
 namespace CompositePattern.Module49
 {
