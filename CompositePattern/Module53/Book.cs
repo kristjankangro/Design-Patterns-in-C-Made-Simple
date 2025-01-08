@@ -1,4 +1,7 @@
-﻿using CompositePattern.Module53;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using CompositePattern.Module53;
 
 namespace Demo.Clip06
 {
@@ -16,6 +19,12 @@ namespace Demo.Clip06
         }
 
         public override string ToString() =>
-            $"{this.Author.Printable}, {this.Title}{this.Volumes.GetLabel(" (Vol.", ")")}";
+            $"{this.Author.Printable}, {this.Title}{this.Volumes.GetLabel(" (Vol.", ")")}" +
+            $"{this.VolumesToString()}";
+
+        private string VolumesToString() =>
+            string.Join(String.Empty, MultpipleVolumeTitles.Select(t => $"{Environment.NewLine} - {t}").ToArray());
+
+        private IEnumerable<string> MultpipleVolumeTitles => Volumes.GetTitles(1);
     }
 }
